@@ -35,7 +35,7 @@ void Foam::brooksCorey::calculateCapillaryPressure()
         scalar Pd = entryPressure_.value();
 
         scalar Se = (alphaW - Srw) / (1.0 - Srw - Srnw + SMALL);
-        Se = max(1e-12, min(1.0 - 1e-12, Se));
+        Se = max(1e-9, min(1.0 - 1e-9, Se));
 
         scalar maxPcLimit = maxPc_.value();
         scalar minPcLimit = minPc_.value();
