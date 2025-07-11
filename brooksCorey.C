@@ -48,7 +48,7 @@ void Foam::brooksCorey::calculateCapillaryPressure()
         }
         else if (Se < 1e-9)
         {
-            Pc_calculated = maxPcLimit;
+            Pc_calculated = Pd;
         }
         else
         {
