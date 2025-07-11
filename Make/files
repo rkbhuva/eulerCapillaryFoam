@@ -1,0 +1,6 @@
+brooksCorey.C
+leverett.C
+capillaryTransportModelBase.C
+porousCapillaryFoam.C
+
+EXE = $(FOAM_USER_APPBIN)/porousCapillaryFoam
