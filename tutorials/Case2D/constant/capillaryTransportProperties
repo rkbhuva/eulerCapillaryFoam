@@ -1,0 +1,53 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2306                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      capillaryTransportProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+capillaryTransportModel
+{
+    // Common parameters for all capillary transport models
+    enabled         true;
+    wettingPhase    1;              // 1 = Electrolyte, 2 = Air
+    maxPc           1e4;
+    minPc           0.0;
+    minKr1          1e-6;
+    minKr2          1e-6;
+    D               1e12;           // K inversen [1/m^2] 
+
+    // --- Brooks-Corey Model ---
+    /*
+    type brooksCorey;
+    residualSaturationWetting    0.05;   // Residual saturation of the wetting phase
+    residualSaturationNonWetting 0.10;   // Residual saturation of the non-wetting phase
+    lambda                       2.0;    // Brooks-Corey pore size distribution index
+    entryPressure                14200;  // [Pa] Entry pressure (Pd)
+
+    // --- VanGenuchten Model ---
+    type vanGenuchten;
+    residualSaturationWetting    0.05;   // Residual saturation of the wetting phase
+    m                            0.5;    // 0 < m < 1, mostly m > 0.5. also to not that n = 1 / (1-m)
+    pc0                          14200;  // [Pa] 1/alpha (kind of entry pressure!) 
+    */
+
+    // --- Leverett J-Function Model ---
+    
+    type            leverett;
+    contactAngle    70.3;           // degrees
+    surfaceTension  0.08459;          // [N/m] Surface tension
+    porosity        0.798;          // Porosity
+    
+}
+// ************************************************************************* //
