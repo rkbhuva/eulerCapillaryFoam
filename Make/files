@@ -1,6 +1,6 @@
-brooksCorey.C
-leverett.C
-capillaryTransportModelBase.C
-porousCapillaryFoam.C
+capillaryModel/brooksCorey.C
+capillaryModel/leverett.C
+capillaryModel/capillaryTransportModelBase.C
+eulerCapillaryFoam.C
 
 EXE = $(FOAM_USER_APPBIN)/eulerCapillaryFoam
