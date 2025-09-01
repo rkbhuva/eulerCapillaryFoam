@@ -3,4 +3,4 @@ leverett.C
 capillaryTransportModelBase.C
 porousCapillaryFoam.C
 
-EXE = $(FOAM_USER_APPBIN)/porousCapillaryFoam
+EXE = $(FOAM_USER_APPBIN)/eulerCapillaryFoam
