@@ -1,0 +1,94 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2306                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      fvSolution;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+solvers
+{
+    "alpha.*"
+    {
+        nAlphaCorr      1;
+        nAlphaSubCycles 2;
+	    //cAlpha		1;
+    }
+
+    p_rgh
+    {
+        solver          GAMG;
+        smoother        DIC; // symGaussSeidel 
+        tolerance       1e-7;
+        relTol          0;
+    }
+
+    p_rghFinal
+    {
+        $p_rgh;
+        tolerance       1e-8;   
+        relTol          0;
+    }
+
+    "U.*"
+    {
+        solver          smoothSolver;
+        smoother        symGaussSeidel;
+        tolerance       1e-5;
+        relTol          0;
+        minIter         1;
+    }
+
+    "T.*"
+    {
+        solver          smoothSolver;
+        smoother        symGaussSeidel;
+        tolerance       1e-7;
+        relTol          0;
+        minIter         1;
+    }
+    
+    "e.*"
+    {
+        solver          smoothSolver;
+        smoother        symGaussSeidel;
+        tolerance       1e-8;
+        relTol          0;
+        minIter         1;
+    }
+}
+
+PIMPLE
+{
+    nOuterCorrectors 2;
+    nCorrectors      1;
+    nNonOrthogonalCorrectors 0;
+}
+
+relaxationFactors
+{
+    equations
+    {
+        ".*"            1;
+        /*
+        p_rgh               0.5; // Pressure under-relaxation
+        U                   0.3; // Velocity under-relaxation (applies to U.air, U.electrolyte)
+        alpha.electrolyte   0.7; // Volume fraction under-relaxation
+        e.electrolyte       0.7; // Energy under-relaxation for electrolyte phase
+        e.air               0.7; // Energy under-relaxation for air phase
+        T.electrolyte       0.7;
+        T.air               0.7;
+        */
+    }
+}
+
+
+// ************************************************************************* //

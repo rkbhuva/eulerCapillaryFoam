@@ -1,0 +1,125 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2306                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     porousCapillaryFoam;
+
+startFrom       startTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         900;
+
+deltaT          1e-5;
+
+//writeControl    runTime;
+
+//writeControl    timeStep;
+
+//writeInterval   100;
+writeControl    adjustable;
+
+writeInterval   10;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable yes;
+
+adjustTimeStep  yes;
+
+adjusttableRunTime  yes;
+
+maxCo           1;
+
+maxDeltaT       1;
+
+
+/*functions
+{
+    add1
+    {
+        type            add;
+        libs            (fieldFunctionObjects);
+        fields          (U.air U.electrolyte);
+        result          U.total;
+        writeControl    writeTime;
+    }
+
+    fieldAverage1
+    {
+        type            fieldAverage;
+        libs            (fieldFunctionObjects);
+        writeControl    writeTime;
+        fields
+        (
+            U.air
+            {
+                 mean        on;
+                 prime2Mean  off;
+                 base        time;
+            }
+
+            U.electrolyte
+            {
+                 mean        on;
+                 prime2Mean  off;
+                 base        time;
+            }
+
+            alpha.air
+            {
+                 mean        on;
+                 prime2Mean  off;
+                 base        time;
+            }
+
+            alpha.electrolyte
+            {
+                 mean        on;
+                 prime2Mean  off;
+                 base        time;
+            }
+             
+            p
+            {
+                 mean        on;
+                 prime2Mean  off;
+                 base        time;
+            }
+
+            pCapillary
+            {
+                 mean        on;
+                 prime2Mean  off;
+                 base        time;
+            }
+        );
+    }
+}*/
+
+
+// ************************************************************************* //

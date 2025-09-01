@@ -1,0 +1,32 @@
+/*--------------------------------*- dictionary -*--------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     |
+    \\  /    A nd           | Version: 2306
+    \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      setFieldsDict;
+}
+
+defaultFieldValues
+(
+    volScalarFieldValue alpha.electrolyte 0
+);
+
+regions
+(
+    boxToCell
+    {
+        box (0 0 0) (0.010 0.010 0.001);
+        fieldValues
+        (
+            volScalarFieldValue alpha.electrolyte 1
+        );
+    }
+);
